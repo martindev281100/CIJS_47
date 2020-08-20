@@ -15,6 +15,9 @@ view.setActiveScreen = (screenName) => {
                 }
                 controller.register(data)
             })
+            document.getElementById('redirect-to-login').addEventListener('click', function(){
+                view.setActiveScreen('login')
+            })
             break;
         case 'login':
             document.getElementById('app').innerHTML = component.login
@@ -27,6 +30,12 @@ view.setActiveScreen = (screenName) => {
                 }
                 controller.login(data)
             })
+            document.getElementById('redirect-to-register').addEventListener('click', function(){
+                view.setActiveScreen('register')
+            })
             break;
     }
+}
+view.setErrorMessage = (elementId, content)=>{
+    document.getElementById(elementId).innerText = content
 }
