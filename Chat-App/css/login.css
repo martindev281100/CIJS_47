@@ -28,3 +28,6 @@
 .login-container .form-action {
     align-items: center;
 }
+#redirect-to-register-page:hover{
+    color: grey;    
+}

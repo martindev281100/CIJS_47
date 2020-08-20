@@ -21,9 +21,13 @@
     border-radius: 5.5px;
     border-width: 0;
 }
+.btn:active{
+    background-color: #0060c7;
+}
 .cursor-pointer{
     cursor: pointer;
 }
 .error{
     color: red;
+    margin-top: 5px;
 }

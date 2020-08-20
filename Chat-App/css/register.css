@@ -31,3 +31,6 @@
 .register-container .form-action {
     align-items: center;
 }
+#redirect-to-login-page:hover{
+    color: grey;
+}

@@ -52,7 +52,7 @@ component.login = `
                 <div class="error" id="password-error"></div>
             </div>
             <div class="form-action">
-                <div>Don't have an account? <span class="cursor-pointer" onclick="view.setActiveScreen('register')">Register</span></div>
+                <div>Don't have an account? <span id="redirect-to-register-page" class="cursor-pointer" onclick="view.setActiveScreen('register')">Register</span></div>
                 <button class="btn cursor-pointer" type="submit">Login</button>
             </div>
         </form>
