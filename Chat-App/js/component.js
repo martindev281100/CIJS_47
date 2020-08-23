@@ -58,3 +58,9 @@ component.login = `
         </form>
     </div>
 `
+component.chatPage = `
+<div class="chatPage-container">
+<div>
+    Hello <span id="userName"></span>
+</div>
+</div>`
