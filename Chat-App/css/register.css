@@ -34,3 +34,6 @@
 #redirect-to-login-page:hover{
     color: grey;
 }
+.name-wrapper .input-wrapper{
+    width: 49%;
+}

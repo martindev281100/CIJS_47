@@ -7,14 +7,39 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/chat.css">
 </head>
 
 <body>
-    <div class="chatPage-container">
-        <div>
-            Hello <span id="userName"></span>
+    <div class="chat-container">
+        <div class="header">
+            Mindx Chat
+        </div>
+        <div class="main">
+            <div class="conversation-detail">
+                <div class="conversation-title">First conversation</div>
+                <div class="list-message">
+                    <div class="message mine">
+                        <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum ipsa provident odit non suscipit laudantium mollitia earum quisquam architecto in, sunt quaerat numquam ratione aperiam voluptas assumenda deserunt, voluptatem dicta!</div>
+                    </div>
+                    <div class="message mine">
+                        <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum ipsa provident odit non suscipit laudantium mollitia earum quisquam architecto in, sunt quaerat numquam ratione aperiam voluptas assumenda deserunt, voluptatem dicta!</div>
+                    </div>
+                    <div class="message their">
+                        <div class="owner">abc@gmail.com</div>
+                        <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium laboriosam possimus, culpa perspiciatis, sint eius facere voluptas impedit consequuntur commodi! Inventore facere error praesentium corrupti. Laudantium nobis doloribus ipsam.</div>
+                    </div>
+                </div>
+                <form action="" id="send-message-form">
+                    <div class="input-wrapper">
+                        <input type="text" placeholder="Type a message" name="message">
+                    </div>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>

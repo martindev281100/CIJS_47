@@ -15,7 +15,7 @@ view.setActiveScreen = (screenName) => {
                 }
                 controller.register(data)
             })
-            document.getElementById('redirect-to-login').addEventListener('click', function(){
+            document.getElementById('redirect-to-login').addEventListener('click', function () {
                 view.setActiveScreen('login')
             })
             break;
@@ -30,16 +30,51 @@ view.setActiveScreen = (screenName) => {
                 }
                 controller.login(data)
             })
-            document.getElementById('redirect-to-register').addEventListener('click', function(){
+            document.getElementById('redirect-to-register').addEventListener('click', function () {
                 view.setActiveScreen('register')
             })
             break;
         case 'chatPage':
             document.getElementById('app').innerHTML = component.chatPage
-            document.getElementById('userName').innerText = model.currentUser.displayName
+            const sendMessageForm = document.getElementById('send-message-form')
+            sendMessageForm.addEventListener('submit', function (e) {
+                e.preventDefault()
+                console.log(sendMessageForm.message.value)
+                const message = {
+                    content: sendMessageForm.message.value,
+                    owner: model.currentUser.email
+                }
+                const messageFromBot = {
+                    content: sendMessageForm.message.value,
+                    owner: 'Chat Bot'
+                }
+                if(sendMessageForm.message.value !== "")
+                {
+                    view.addMessage(message)
+                    view.addMessage(messageFromBot)
+                }
+                sendMessageForm.message.value = ''
+            })
             break;
     }
 }
-view.setErrorMessage = (elementId, content)=>{
+view.setErrorMessage = (elementId, content) => {
     document.getElementById(elementId).innerText = content
+}
+
+view.addMessage = (message) => {
+    const messageWrapper = document.createElement('div')
+    messageWrapper.classList.add('message')
+    if (message.owner === model.currentUser.email) {
+        messageWrapper.classList.add('mine')
+        messageWrapper.innerHTML = `
+        <div class="content">${message.content}</div>`
+    } else {
+        messageWrapper.classList.add('their')
+        messageWrapper.innerHTML = `
+        <div class="owner">${message.owner}</div>
+        <div class="content">${message.content}</div>`
+    }
+    console.log(messageWrapper)
+    document.querySelector('.list-message').appendChild(messageWrapper)
 }

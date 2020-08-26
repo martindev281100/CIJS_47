@@ -18,21 +18,22 @@ model.login = async ({
     password
 }) => {
     try {
-        const response = await firebase.auth().signInWithEmailAndPassword(email, password)
-        console.log(response)
-        if(response && response.user.emailVerified == true){
-            //Logged in
-            model.currentUser = {
-                email: response.user.email,
-                displayName: response.user.displayName
-            }
-            //Homework:
-            view.setActiveScreen('chatPage')
-            console.log('Current User: '+ model.currentUser)
-        }
-        else{
-            alert('Please verify your email!')
-        }
+        firebase.auth().signInWithEmailAndPassword(email, password)
+        // console.log(response)
+        // if(response && response.user.emailVerified == true){
+        //     //Logged in
+        //     model.currentUser = {
+        //         email: response.user.email,
+        //         displayName: response.user.displayName
+        //     }
+        //     console.log(model.currentUser)
+        //     //Homework:
+        //     view.setActiveScreen('chatPage')
+        //     console.log('Current User: '+ model.currentUser)
+        // }
+        // else{
+        //     alert('Please verify your email!')
+        // }
     } catch (err) {
         alert(err)
     }
