@@ -44,8 +44,8 @@
     border: 0;
     box-shadow: none;
     position: absolute;
-    right: 5px;
-    top: 10px;
+    right: 10px;
+    top: 15px;
 }
 
 
@@ -86,7 +86,7 @@
 }
 .btn-send{
     color: #007cfd;
-    font-size: 40px;
+    font-size: 30px;
     cursor: pointer;
 }
 .btn-send:hover{
