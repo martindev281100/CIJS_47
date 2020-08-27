@@ -69,9 +69,9 @@ component.chatPage = `
                 <div class="list-message">
                     
                 </div>
-                <form action="" id="send-message-form">
+                <form action="" id="send-message-form" class="border-input">
                     <div class="input-wrapper">
-                        <input type="text" placeholder="Type a message" name="message">
+                        <input type="text" class = "text-wrapper" placeholder="Type a message" name="message">
                     </div>
                     <button type="submit"><i class="far fa-paper-plane btn-send" ></i></button>
                 </form>

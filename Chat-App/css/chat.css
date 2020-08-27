@@ -33,6 +33,7 @@
 
 .chat-container .list-message {
     flex-grow: 1;
+    overflow-y: scroll;
 }
 
 .chat-container #send-message-form {
@@ -44,7 +45,7 @@
     border: 0;
     box-shadow: none;
     position: absolute;
-    right: 10px;
+    right: 0px;
     top: 15px;
 }
 
@@ -88,10 +89,21 @@
     color: #007cfd;
     font-size: 30px;
     cursor: pointer;
+    padding: 0 10px;
 }
 .btn-send:hover{
     color: #0166d3;
 }
 input:focus{
     outline: none;
+}
+.text-wrapper{
+    /* word-wrap: break-word; */
+}
+.input-wrapper input{
+    border: none;
+    width: 98%;
+}
+.border-input{
+    border: 1px solid #dbdbdb;
 }

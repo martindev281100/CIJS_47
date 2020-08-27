@@ -54,12 +54,13 @@ view.setActiveScreen = function (screenName) {
           owner: 'Chat Bot'
         };
 
-        if (sendMessageForm.message.value !== "") {
+        if (sendMessageForm.message.value.trim() !== "") {
           view.addMessage(message);
           view.addMessage(messageFromBot);
         }
 
         sendMessageForm.message.value = '';
+        document.querySelector('.list-message').scrollBy(0, 500);
       });
       break;
   }
