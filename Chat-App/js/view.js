@@ -42,19 +42,20 @@ view.setActiveScreen = (screenName) => {
                 console.log(sendMessageForm.message.value)
                 const message = {
                     content: sendMessageForm.message.value,
-                    owner: model.currentUser.email
+                    owner: model.currentUser.email,
+                    createdAt: new Date().toISOString()
                 }
                 const messageFromBot = {
                     content: sendMessageForm.message.value,
                     owner: 'Chat Bot'
                 }
-                if(sendMessageForm.message.value.trim() !== "")
-                {
+                if (sendMessageForm.message.value.trim() !== "") {
                     view.addMessage(message)
                     view.addMessage(messageFromBot)
                 }
+                updateMessage(message);
                 sendMessageForm.message.value = ''
-                document.querySelector('.list-message').scrollBy(0,500);
+                document.querySelector('.list-message').scrollBy(0, 500);
             })
             break;
     }

@@ -47,7 +47,8 @@ view.setActiveScreen = function (screenName) {
         console.log(sendMessageForm.message.value);
         var message = {
           content: sendMessageForm.message.value,
-          owner: model.currentUser.email
+          owner: model.currentUser.email,
+          createdAt: new Date().toISOString()
         };
         var messageFromBot = {
           content: sendMessageForm.message.value,
@@ -59,6 +60,7 @@ view.setActiveScreen = function (screenName) {
           view.addMessage(messageFromBot);
         }
 
+        updateMessage(message);
         sendMessageForm.message.value = '';
         document.querySelector('.list-message').scrollBy(0, 500);
       });

@@ -67,7 +67,6 @@ component.chatPage = `
             <div class="conversation-detail">
                 <div class="conversation-title">First conversation</div>
                 <div class="list-message">
-                    
                 </div>
                 <form action="" id="send-message-form" class="border-input">
                     <div class="input-wrapper">
