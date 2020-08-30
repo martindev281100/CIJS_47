@@ -38,7 +38,7 @@ window.onload = function () {
 };
 
 var loadMessage = function loadMessage() {
-  var docId, response, user, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, item;
+  var docId, response, user, conversationTitle, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, item;
 
   return regeneratorRuntime.async(function loadMessage$(_context) {
     while (1) {
@@ -52,10 +52,12 @@ var loadMessage = function loadMessage() {
           response = _context.sent;
           user = getOneDocument(response);
           console.log(user);
+          conversationTitle = document.getElementById('conversationTitle');
+          conversationTitle.innerText = user.title;
           _iteratorNormalCompletion = true;
           _didIteratorError = false;
           _iteratorError = undefined;
-          _context.prev = 9;
+          _context.prev = 11;
 
           for (_iterator = user.messages[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             item = _step.value;
@@ -64,45 +66,45 @@ var loadMessage = function loadMessage() {
           } // console.log(user.messages[0].content)
 
 
-          _context.next = 17;
+          _context.next = 19;
           break;
 
-        case 13:
-          _context.prev = 13;
-          _context.t0 = _context["catch"](9);
+        case 15:
+          _context.prev = 15;
+          _context.t0 = _context["catch"](11);
           _didIteratorError = true;
           _iteratorError = _context.t0;
 
-        case 17:
-          _context.prev = 17;
-          _context.prev = 18;
+        case 19:
+          _context.prev = 19;
+          _context.prev = 20;
 
           if (!_iteratorNormalCompletion && _iterator["return"] != null) {
             _iterator["return"]();
           }
 
-        case 20:
-          _context.prev = 20;
+        case 22:
+          _context.prev = 22;
 
           if (!_didIteratorError) {
-            _context.next = 23;
+            _context.next = 25;
             break;
           }
 
           throw _iteratorError;
 
-        case 23:
-          return _context.finish(20);
-
-        case 24:
-          return _context.finish(17);
-
         case 25:
+          return _context.finish(22);
+
+        case 26:
+          return _context.finish(19);
+
+        case 27:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[9, 13, 17, 25], [18,, 20, 24]]);
+  }, null, null, [[11, 15, 19, 27], [20,, 22, 26]]);
 };
 
 var updateMessage = function updateMessage(message) {

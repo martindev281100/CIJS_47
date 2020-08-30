@@ -38,6 +38,8 @@ const loadMessage = async () => {
   const response = await firebase.firestore().collection('conversations').doc(docId).get()
   const user = getOneDocument(response)
   console.log(user)
+  const conversationTitle = document.getElementById('conversationTitle')
+  conversationTitle.innerText = user.title
   for(const item of user.messages)
   {
     console.log(item.content)
