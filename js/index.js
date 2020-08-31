@@ -9,10 +9,9 @@ window.onload = () => {
     appId: "1:212206393626:web:dd948283b8c9e649ff74a3"
   };
   firebase.initializeApp(firebaseConfig);
-  console.log(firebase.app())
+  // console.log(firebase.app())
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      console.log(user)
       model.currentUser = {
         displayName: user.displayName,
         email: user.email
@@ -24,43 +23,42 @@ window.onload = () => {
         firebase.auth().signOut()
         view.setActiveScreen('login')
       }
-      view.setActiveScreen('chatPage')
     } else {
       view.setActiveScreen('login')
     }
   })
   // templateFirestore()
-  loadMessage();
+  // loadMessage();
 }
 
-const loadMessage = async () => {
-  const docId = 'mVfQAtNwH5FsEMmNkv8G'
-  const response = await firebase.firestore().collection('conversations').doc(docId).get()
-  const user = getOneDocument(response)
-  console.log(user)
-  const conversationTitle = document.getElementById('conversationTitle')
-  conversationTitle.innerText = user.title
-  for(const item of user.messages)
-  {
-    console.log(item.content)
-    view.addMessage(item)
-  }
-  // console.log(user.messages[0].content)
-}
-const updateMessage = async (message) =>{
-  const docId = 'mVfQAtNwH5FsEMmNkv8G'
-  const messageToAdd = {
-    content : message.content,
-    owner : message.owner,
-    createdAt : message.createdAt
-  }
-  const el = {
-    messages: firebase.firestore.FieldValue.arrayUnion(messageToAdd)
-  }
-  firebase.firestore().collection('conversations').doc(docId).update(el)
+// const loadMessage = async () => {
+//   const docId = 'mVfQAtNwH5FsEMmNkv8G'
+//   const response = await firebase.firestore().collection('conversations').doc(docId).get()
+//   const user = getOneDocument(response)
+//   // console.log(user)
+//   const conversationTitle = document.getElementById('conversationTitle')
+//   conversationTitle.innerText = user.title
+//   for(const item of user.messages)
+//   {
+//     // console.log(item.content)
+//     view.addMessage(item)
+//   }
+//   // console.log(user.messages[0].content)
+// }
+// const updateMessage = async (message) =>{
+//   const docId = 'mVfQAtNwH5FsEMmNkv8G'
+//   const messageToAdd = {
+//     content : message.content,
+//     owner : message.owner,
+//     createdAt : message.createdAt
+//   }
+//   const el = {
+//     messages: firebase.firestore.FieldValue.arrayUnion(messageToAdd)
+//   }
+//   firebase.firestore().collection('conversations').doc(docId).update(el)
 
-  // console.log(firebase.firestore().collection('conversations').doc(docId))
-}
+//   // console.log(firebase.firestore().collection('conversations').doc(docId))
+// }
 // const templateFirestore = async () => {
 //   //get one
 //   const docId = '9plvsXVRzr3yTyLepQ44'
@@ -91,7 +89,7 @@ const updateMessage = async (message) =>{
 const getManyDocument = (response) => {
   const listData = [];
   for (const doc of response.docs) {
-    console.log(getOneDocument(doc))
+    listData.push(getOneDocument(doc))
   }
   return listData
 }

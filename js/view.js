@@ -45,25 +45,24 @@ view.setActiveScreen = (screenName) => {
                     owner: model.currentUser.email,
                     createdAt: new Date().toISOString()
                 }
-                const messageFromBot = {
-                    content: sendMessageForm.message.value,
-                    owner: 'Chat Bot'
-                }
                 if (sendMessageForm.message.value.trim() !== "") {
-                    view.addMessage(message)
-                    view.addMessage(messageFromBot)
+                    model.addMessage(message)
                 }
-                updateMessage(message);
+                // updateMessage(message);
                 sendMessageForm.message.value = ''
-                document.querySelector('.list-message').scrollBy(0, 500);
             })
+            model.getConversations()
+            model.listenConversationChange()
             break;
     }
 }
 view.setErrorMessage = (elementId, content) => {
     document.getElementById(elementId).innerText = content
 }
-
+view.scrollToEndElement = () =>{
+    const element = document.querySelector('.list-message')
+    element.scrollTop = element.scrollHeight
+}
 view.addMessage = (message) => {
     const messageWrapper = document.createElement('div')
     messageWrapper.classList.add('message')
@@ -77,6 +76,12 @@ view.addMessage = (message) => {
         <div class="owner">${message.owner}</div>
         <div class="content">${message.content}</div>`
     }
-    console.log(messageWrapper)
     document.querySelector('.list-message').appendChild(messageWrapper)
+    // document.querySelector('.list-message').scrollBy(0, document.body.scrollHeight);
+}
+view.showCurrentConversation = () => {
+    for (message of model.currentConversation.messages) {
+        view.addMessage(message)
+    }
+    view.scrollToEndElement();
 }
