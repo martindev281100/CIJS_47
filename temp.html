@@ -8,38 +8,27 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/chat.css">
+    <link rel="stylesheet" href="./css/new_conversation.css">
 </head>
 
 <body>
-    <div class="chat-container">
-        <div class="header">
-            Mindx Chat
-        </div>
-        <div class="main">
-            <div class="conversation-detail">
-                <div class="conversation-title">First conversation</div>
-                <div class="list-message">
-                    <div class="message mine">
-                        <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum ipsa provident odit non suscipit laudantium mollitia earum quisquam architecto in, sunt quaerat numquam ratione aperiam voluptas assumenda deserunt, voluptatem dicta!</div>
-                    </div>
-                    <div class="message mine">
-                        <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum ipsa provident odit non suscipit laudantium mollitia earum quisquam architecto in, sunt quaerat numquam ratione aperiam voluptas assumenda deserunt, voluptatem dicta!</div>
-                    </div>
-                    <div class="message their">
-                        <div class="owner">abc@gmail.com</div>
-                        <div class="content">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus laudantium laboriosam possimus, culpa perspiciatis, sint eius facere voluptas impedit consequuntur commodi! Inventore facere error praesentium corrupti. Laudantium nobis doloribus ipsam.</div>
-                    </div>
-                </div>
-                <form action="" id="send-message-form">
-                    <div class="input-wrapper">
-                        <input type="text" placeholder="Type a message" name="message">
-                    </div>
-                    <button type="submit">Send</button>
-                </form>
+    <div class="create-conversation-wrapper">
+        <div class="header">Mindx Chat</div>
+        <form id="create-conversation-form" style="width: 60%; margin: auto; margin-top: 20px">
+            <h4>Create new conversation: </h4>
+            <div class="input-wrapper">
+                <input type="text" placeholder="Conversation title" name="title">
+                <div class="error" id="create-conversation-title-error"></div>
             </div>
-        </div>
+            <div class="input-wrapper">
+                <input type="email" placeholder="Friend email" name="email">
+                <div class="error" id="create-conversation-title-error"></div>
+            </div>
+            <button class="btn">Save</button>
+            <button class="btn btn-bg-light" type="button" id="redirect-to-chat">Cancle</button>
+        </form>
     </div>
-
 </body>
+<script src="https://kit.fontawesome.com/4a42177165.js" crossorigin="anonymous"></script>
 
 </html>
