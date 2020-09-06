@@ -83,3 +83,20 @@ component.chatPage = `
     </div>
 </div>
 </div>`
+
+component.createConversationPage = `<div class="create-conversation-wrapper">
+        <div class="header">Mindx Chat</div>
+        <form id="create-conversation-form" style="width: 60%; margin: auto; margin-top: 20px">
+            <h4>Create new conversation: </h4>
+            <div class="input-wrapper">
+                <input type="text" placeholder="Conversation title" name="title">
+                <div class="error" id="create-conversation-title-error"></div>
+            </div>
+            <div class="input-wrapper">
+                <input type="email" placeholder="Friend email" name="email" id="add-conversation">
+                <div class="error" id="create-conversation-title-error"></div>
+            </div>
+            <button class="btn" type="submit" id="add-conversation-form">Save</button>
+            <button class="btn btn-bg-light" type="button" id="redirect-to-chat">Cancle</button>
+        </form>
+    </div>`

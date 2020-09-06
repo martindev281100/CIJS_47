@@ -37,9 +37,11 @@ view.setActiveScreen = (screenName) => {
         case 'chatPage':
             document.getElementById('app').innerHTML = component.chatPage
             const sendMessageForm = document.getElementById('send-message-form')
+            document.getElementById('create-conversation').addEventListener('click', function () {
+                view.setActiveScreen('addConversationPage')
+            })
             sendMessageForm.addEventListener('submit', function (e) {
                 e.preventDefault()
-                console.log(sendMessageForm.message.value)
                 const message = {
                     content: sendMessageForm.message.value,
                     owner: model.currentUser.email,
@@ -48,12 +50,27 @@ view.setActiveScreen = (screenName) => {
                 if (sendMessageForm.message.value.trim() !== "") {
                     model.addMessage(message)
                 }
-                // updateMessage(message);
                 sendMessageForm.message.value = ''
             })
             model.getConversations()
             model.listenConversationChange()
             break;
+        case 'addConversationPage':
+            document.getElementById('app').innerHTML = component.createConversationPage
+            const addConversationForm = document.getElementById('create-conversation-form')
+            addConversationForm.addEventListener('submit', function (e) {
+                e.preventDefault()
+                console.log('click')
+                const conversationInfo = {
+                    title: addConversationForm.title.value,
+                    email: addConversationForm.email.value
+                }
+                if (addConversationForm.title.value.trim() !== "") {
+                    model.createConversation(conversationInfo)
+                }
+            })
+            break;
+
     }
 }
 view.setErrorMessage = (elementId, content) => {
@@ -77,7 +94,6 @@ view.addMessage = (message) => {
         <div class="content">${message.content}</div>`
     }
     document.querySelector('.list-message').appendChild(messageWrapper)
-    // document.querySelector('.list-message').scrollBy(0, document.body.scrollHeight);
 }
 view.showCurrentConversation = () => {
     document.querySelector('.conversation-title').innerHTML = model.currentConversation.title

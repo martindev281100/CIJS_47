@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/chat.css">
-    <link rel="stylesheet" href="./css/new_conversation.css">
 </head>
 
 <body>
@@ -21,14 +20,32 @@
                 <div class="error" id="create-conversation-title-error"></div>
             </div>
             <div class="input-wrapper">
-                <input type="email" placeholder="Friend email" name="email">
+                <input type="email" placeholder="Friend email" name="email" id="add-conversation">
                 <div class="error" id="create-conversation-title-error"></div>
             </div>
-            <button class="btn">Save</button>
+            <button class="btn" type="button" id="add-conversation-form">Save</button>
             <button class="btn btn-bg-light" type="button" id="redirect-to-chat">Cancle</button>
         </form>
     </div>
 </body>
+<script>
+    let addConversationForm = document.getElementById('add-conversation-form')
+    let email = document.getElementById('add-conversation').value
+    addConversationForm.addEventListener('click', () => {
+        console.log('email: ' + email)
+        const url = `https://apilayer.net/api/check?access_key=5f3563107669db715cff9265853c287e&email=${email}`
+        fetch(url)
+            .then(data => {
+                return data.json()
+            })
+            .then(res => {
+                console.log(res)
+                if (res.format_valid == true) {
+                    console.log('ok')
+                }
+            })
+    })
+</script>
 <script src="https://kit.fontawesome.com/4a42177165.js" crossorigin="anonymous"></script>
 
 </html>

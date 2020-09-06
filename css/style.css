@@ -19,6 +19,7 @@
     color: #fff;
     border-radius: 5.5px;
     border-width: 0;
+    cursor: pointer;
 }
 .btn:active{
     background-color: #0060c7;
@@ -29,4 +30,8 @@
 .error{
     color: red;
     margin-top: 5px;
+}
+.btn-bg-light{
+    color: black;
+    background-color: #dbdbdb;
 }

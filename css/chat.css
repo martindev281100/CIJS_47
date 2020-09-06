@@ -30,6 +30,7 @@
     height: 100%;
     flex-direction: column;
     flex-grow: 1;
+    max-width: 85%;
 }
 
 .chat-container .list-message {
@@ -57,6 +58,7 @@
 
 #send-message-form .input-wrapper input {
     padding: 22px 20px;
+    border: none;
 }
 
 .list-message .message .content {
@@ -98,11 +100,8 @@
 input:focus{
     outline: none;
 }
-.text-wrapper{
-    /* word-wrap: break-word; */
-}
+
 .input-wrapper input{
-    border: none;
     width: 98%;
 }
 .border-input{
