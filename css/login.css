@@ -31,3 +31,9 @@
 #redirect-to-register-page:hover{
     color: grey;    
 }
+
+@media screen and (max-width: 768px) {
+    .login-container #login-form{
+        width: 100%;
+    }
+}

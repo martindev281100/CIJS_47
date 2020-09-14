@@ -1,5 +1,5 @@
 const view = {}
-view.setActiveScreen = (screenName) => {
+view.setActiveScreen = (screenName, fromCreateConversation = false) => {
     switch (screenName) {
         case 'register':
             document.getElementById('app').innerHTML = component.register
@@ -37,10 +37,20 @@ view.setActiveScreen = (screenName) => {
         case 'chatPage':
             document.getElementById('app').innerHTML = component.chatPage
             const sendMessageForm = document.getElementById('send-message-form')
+            const addUserForm = document.getElementById('add-user-form')
+            addUserForm.addEventListener('submit', function (e) {
+                e.preventDefault()
+                const email = addUserForm.email.value
+                if (addUserForm.email.value.trim() !== "") {
+                    model.addUser(email)
+                }
+                addUserForm.email.value = ''
+
+            })
             document.getElementById('create-conversation').addEventListener('click', function () {
                 view.setActiveScreen('addConversationPage')
             })
-            sendMessageForm.addEventListener('submit', function (e) {
+            document.getElementById('send-message-form').addEventListener('submit', function (e) {
                 e.preventDefault()
                 const message = {
                     content: sendMessageForm.message.value,
@@ -52,11 +62,22 @@ view.setActiveScreen = (screenName) => {
                 }
                 sendMessageForm.message.value = ''
             })
-            model.getConversations()
-            model.listenConversationChange()
+            document.querySelector('#send-message-form input').addEventListener('click', function () {
+                view.hideNotification(model.currentConversation.id)
+            })
+            if (fromCreateConversation) {
+                view.showCurrentConversation()
+                view.showConversations()
+            } else {
+                model.getConversations()
+                model.listenConversationChange()
+            }
             break;
         case 'addConversationPage':
             document.getElementById('app').innerHTML = component.createConversationPage
+            document.getElementById('redirect-to-chat').addEventListener('click', function () {
+                view.setActiveScreen('chatPage', true)
+            })
             const addConversationForm = document.getElementById('create-conversation-form')
             addConversationForm.addEventListener('submit', function (e) {
                 e.preventDefault()
@@ -66,9 +87,10 @@ view.setActiveScreen = (screenName) => {
                     email: addConversationForm.email.value
                 }
                 if (addConversationForm.title.value.trim() !== "") {
-                    model.createConversation(conversationInfo)
+                    controller.createConversation(conversationInfo)
                 }
             })
+
             break;
 
     }
@@ -98,10 +120,15 @@ view.addMessage = (message) => {
 view.showCurrentConversation = () => {
     document.querySelector('.conversation-title').innerHTML = model.currentConversation.title
     document.querySelector('.list-message').innerHTML = ''
+    document.querySelector('.list-users').innerHTML = ''
     for (message of model.currentConversation.messages) {
         view.addMessage(message)
     }
+    for (user of model.currentConversation.users) {
+        view.addUser(user)
+    }
     view.scrollToEndElement();
+
 }
 view.showConversations = () => {
     for (conversation of model.conversations) {
@@ -113,13 +140,29 @@ view.addConversation = (conversation) => {
     const conversationWrapper = document.createElement('div')
     conversationWrapper.classList.add('conversation')
     conversationWrapper.classList.add('cursor-pointer')
+    conversationWrapper.id = conversation.id
     if (conversation.id === model.currentConversation.id) {
         conversationWrapper.classList.add('current')
     }
     conversationWrapper.innerHTML = `
     <div class="left-conversation-title">${conversation.title}</div>
     <div class="num-of-user">${conversation.users.length} users</div>
+    <div class="notification"></div>
     `
+    const mediaQuery = window.matchMedia('(max-width: 768px)')
+    if (mediaQuery.matches) {
+        conversationWrapper.firstElementChild.innerText = conversation.title.charAt(0).toUpperCase()
+    }
+    mediaQuery.addListener((e) => {
+        if (e.matches) {
+            conversationWrapper.firstElementChild.innerText = conversation.title.charAt(0).toUpperCase()
+            document.getElementById('create-conversation').innerText = '+'
+        } else {
+            conversationWrapper.firstElementChild.innerText = conversation.title
+            document.getElementById('create-conversation').innerText = '+ New Conversation'
+        }
+    })
+    document.getElementById('create-conversation').innerText = "+"
     document.querySelector('.list-conversations').appendChild(conversationWrapper)
 
     conversationWrapper.addEventListener('click', () => {
@@ -129,4 +172,23 @@ view.addConversation = (conversation) => {
         document.querySelector('.conversation.current').classList.remove('current')
         conversationWrapper.classList.add('current')
     })
+
+}
+view.addUser = (user) => {
+    const addWrapper = document.createElement('div')
+    addWrapper.classList.add('user-email')
+    addWrapper.innerHTML = user
+    document.querySelector('.list-users').appendChild(addWrapper)
+}
+view.addUserInConversation = (numberUser) => {
+    const currentConversationElement = document.querySelector('.conversation.current .num-of-user')
+    currentConversationElement.innerText = numberUser + ' users'
+}
+view.showNotification = (docId) => {
+    const conversation = document.getElementById(docId)
+    conversation.querySelector('.notification').style = 'display: block'
+}
+view.hideNotification = (docId) => {
+    const conversation = document.getElementById(docId)
+    conversation.querySelector('.notification').style = 'display: none'
 }

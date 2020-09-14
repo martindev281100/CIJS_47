@@ -4,31 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Temporary HTML</title>
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/chat.css">
 </head>
 
 <body>
-    <div class="create-conversation-wrapper">
-        <div class="header">Mindx Chat</div>
-        <form id="create-conversation-form" style="width: 60%; margin: auto; margin-top: 20px">
-            <h4>Create new conversation: </h4>
-            <div class="input-wrapper">
-                <input type="text" placeholder="Conversation title" name="title">
-                <div class="error" id="create-conversation-title-error"></div>
+    <div class="chat-container">
+        <div class="header">
+            Mindx Chat
+        </div>
+        <div class="main">
+            <div class="aside-left">
+                <div class="create-conversation">
+                    <button class="btn cursor-pointer" id="create-conversation">+ New conversation</button>
+                </div>
+                <div class="list-conversations"></div>
             </div>
-            <div class="input-wrapper">
-                <input type="email" placeholder="Friend email" name="email" id="add-conversation">
-                <div class="error" id="create-conversation-title-error"></div>
+            <div class="conversation-detail">
+                <div class="conversation-title" id="conversationTitle">New Conversation</div>
+                <div class="list-message">
+                </div>
+                <form action="" id="send-message-form" class="border-input">
+                    <div class="input-wrapper">
+                        <input type="text" class="text-wrapper" placeholder="Type a message" name="message">
+                    </div>
+                    <button type="submit"><i class="far fa-paper-plane btn-send"></i></button>
+                </form>
             </div>
-            <button class="btn" type="button" id="add-conversation-form">Save</button>
-            <button class="btn btn-bg-light" type="button" id="redirect-to-chat">Cancle</button>
-        </form>
+            <div class="aside-right">
+                <div class="list-users">
+                    <div class="user-email">
+                        manhdaokhacmanh@gmail.com
+                    </div>
+                    <div class="user-email">
+                        manhdkgch18056@fpt.edu.vn
+                    </div>
+                </div>
+                <form id="add-user-form">
+                    <div class="input-wrapper">
+                        <input type="email" name="email" placeholder="Friend Email">
+                        <div class="error" id="email-error"></div>
+                    </div>
+                    <button class="btn">Add</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
-<script>
+<!-- <script>
     let addConversationForm = document.getElementById('add-conversation-form')
     let email = document.getElementById('add-conversation').value
     addConversationForm.addEventListener('click', () => {
@@ -45,7 +70,7 @@
                 }
             })
     })
-</script>
+</script> -->
 <script src="https://kit.fontawesome.com/4a42177165.js" crossorigin="anonymous"></script>
 
 </html>

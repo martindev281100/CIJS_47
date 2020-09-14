@@ -37,3 +37,8 @@
 .name-wrapper .input-wrapper{
     width: 49%;
 }
+@media screen and (max-width: 768px) {
+    .register-container #register-form {
+        width: 100%;
+    }
+}

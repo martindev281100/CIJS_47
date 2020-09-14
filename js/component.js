@@ -58,31 +58,41 @@ component.login = `
         </form>
     </div>
 `
-component.chatPage = `
-<div class="chat-container">
-<div class="header">
-    Mindx Chat
-</div>
-<div class="main">
-    <div class="aside-left">
-        <div class="create-conversation">
-            <button class="btn cursor-pointer" id="create-conversation">+ New conversation</button>
+component.chatPage = `<div class="chat-container">
+        <div class="header">
+            Mindx Chat
         </div>
-        <div class="list-conversations"></div>
-    </div>
-    <div class="conversation-detail">
-        <div class="conversation-title" id="conversationTitle">New Conversation</div>
-        <div class="list-message">
-        </div>
-        <form action="" id="send-message-form" class="border-input">
-            <div class="input-wrapper">
-                <input type="text" class="text-wrapper" placeholder="Type a message" name="message">
+        <div class="main">
+            <div class="aside-left">
+                <div class="create-conversation">
+                    <button class="btn cursor-pointer" id="create-conversation">+ New conversation</button>
+                </div>
+                <div class="list-conversations"></div>
             </div>
-            <button type="submit"><i class="far fa-paper-plane btn-send"></i></button>
-        </form>
-    </div>
-</div>
-</div>`
+            <div class="conversation-detail">
+                <div class="conversation-title" id="conversationTitle">New Conversation</div>
+                <div class="list-message">
+                </div>
+                <form action="" id="send-message-form" class="border-input ">
+                    <div class="input-wrapper">
+                        <input type="text" class="text-wrapper" placeholder="Type a message" name="message">
+                    </div>
+                    <button type="submit"><i class="far fa-paper-plane btn-send"></i></button>
+                </form>
+            </div>
+            <div class="aside-right">
+                <div class="list-users">
+                </div>
+                <form id="add-user-form" class="mt-1">
+                    <div class="input-wrapper">
+                        <input type="email" name="email" placeholder="Friend Email">
+                        <div class="error" id="email-error"></div>
+                    </div>
+                    <button class="btn">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>`
 
 component.createConversationPage = `<div class="create-conversation-wrapper">
         <div class="header">Mindx Chat</div>
@@ -94,7 +104,7 @@ component.createConversationPage = `<div class="create-conversation-wrapper">
             </div>
             <div class="input-wrapper">
                 <input type="email" placeholder="Friend email" name="email" id="add-conversation">
-                <div class="error" id="create-conversation-title-error"></div>
+                <div class="error" id="create-conversation-email-error"></div>
             </div>
             <button class="btn" type="submit" id="add-conversation-form">Save</button>
             <button class="btn btn-bg-light" type="button" id="redirect-to-chat">Cancle</button>

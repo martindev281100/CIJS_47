@@ -1,19 +1,22 @@
-*{
-    margin: 0; 
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.input-wrapper input{
+
+.input-wrapper input {
     border-color: #dbdbdb;
     padding: 10px 20px;
     border: 1px solid #dbdbdb;
     border-radius: 5.5px;
     width: 100%;
 }
-.input-wrapper{
+
+.input-wrapper {
     margin-bottom: 10px;
 }
-.btn{
+
+.btn {
     padding: 8px 20px;
     background-color: #037bfe;
     color: #fff;
@@ -21,17 +24,25 @@
     border-width: 0;
     cursor: pointer;
 }
-.btn:active{
+
+.btn:active {
     background-color: #0060c7;
 }
-.cursor-pointer{
+
+.cursor-pointer {
     cursor: pointer;
 }
-.error{
+
+.error {
     color: red;
     margin-top: 5px;
 }
-.btn-bg-light{
+
+.btn-bg-light {
     color: black;
     background-color: #dbdbdb;
+}
+
+.mt-1 {
+    margin-top: 1rem !important;
 }
